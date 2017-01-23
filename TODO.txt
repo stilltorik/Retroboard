@@ -1,0 +1,33 @@
+websockets:
+- X lock/unlock postit
+- X on unlock, update database
+- X create postit: finish databaseBoard.js > createPostit
+- X local update
+- Update databaseBoard update to use update rather than save
+
+on postit, add:
+- delete option
+- force unlock
+
+Lock on:
+- X moving
+- X cursor in textarea
+
+unlock on:
+- X mouseup
+- X onblur
+
+Else:
+- X add board name
+- X remove bottom part
+- X remove add postit type on board
+- ? remove postit type in createBoard page
+- X init board
+- Home page
+- prettifying
+- clean code (add/show postit type section)
+!!!!! Careful with security issues!! Injections in title, section titles and usernames !!!!!
+
+Bugs:
+- Can (probably) still move locked postits
+- Can't put down postits when scrolling happens.

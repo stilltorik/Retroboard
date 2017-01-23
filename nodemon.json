@@ -1,0 +1,4 @@
+{
+  "verbose": true,
+  "ignore": ["node_module/*", "data/*", "launchServer.*", "frontend/*"]
+}

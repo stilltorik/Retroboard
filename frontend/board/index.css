@@ -1,0 +1,171 @@
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+}
+.usernameMode {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+.username {
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  z-index: 10000000000;
+}
+.flexChild {
+  margin: 0 auto;
+}
+.usernameLayer {
+  align-self: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+.usernameLayer, .usernameLayer input, .usernameLayer button {
+  font-size: 32px;
+}
+#postitContainer {
+  display: flex;
+  margin-bottom: 15px;
+}
+.postitSelectorSection {
+  margin: 0 5px;
+  padding: 10px 5px;
+  width: 120px;
+}
+.postitSelectorSection .colorScheme {
+  position: relative;
+  background-color: grey;
+  border-radius: 2px;
+  padding: 6px;
+  width: 25px;
+  cursor: pointer;
+}
+.postitSelectorSection .colorScheme .selectedColor {
+  width: 25px;
+  height: 17px;
+  background-color: lightgrey;
+}
+.postitSelectorSection .colorScheme .colorOptions {
+  position: absolute;
+  left: 0;
+  border-top: 1px dashed black;
+  margin-top: 5px;
+  padding: 0 5px 10px;
+  background-color: grey;
+}
+.postitSelectorSection .colorScheme .colorOptions .option {
+  width: 25px;
+  height: 17px;
+  margin-top: 10px;
+}
+.postitSelectorTitle {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.postit {
+  height: 160px;
+  width: 120px;
+  border-radius: 5px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 4px #666666;
+  cursor: pointer;
+}
+.postit[title]:hover:before {
+  content: attr(title);
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background-color: white;
+  font-size: 8px;
+  border-radius: 2px 0 0;
+}
+.postit.locked .overlay {
+  display: none;
+}
+.postit.locked .overlay {
+  display: block;
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.postit .hasPlus {
+  background-color: red;
+}
+.postit .noPlus {
+  background-color: green;
+}
+.postitText {
+  background-color: rgba(255, 255, 255, 0.5);;
+  border: none;
+  margin: 20px 5px 10px;
+  width: calc(100% - 10px);
+  height: 110px;
+  resize: none;
+  font-size: 20px;
+}
+.dragging{
+  position: fixed;
+  background-color: black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+#board {
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.userSection {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+.userSection .openCloseToggle {
+  width: 200px;
+  height: 20px;
+  background-color: #087CC4;
+  margin: 0 auto;
+  border-radius: 20px 20px 0 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.userSection .openCloseToggle div {
+  padding-top: 6px;
+}
+.userSection.open .openCloseToggle div {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.userSection.open .userDetails {
+  background-color: rgba(135, 206, 250, 0.8);
+  height: 200px;
+  padding: 10px 0;
+}
+.userSection.closed .userDetails {
+  display: none;
+}
+.userSection .userDetails .nameInput {
+  margin: 0 auto;
+  display: block;
+}

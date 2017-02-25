@@ -12,31 +12,8 @@
         width: 120px;
       }
       .postitSelectorSection .colorScheme {
-        position: relative;
-        background-color: grey;
-        border-radius: 2px;
-        padding: 6px;
-        width: 25px;
-        cursor: pointer;
-        z-index: 2;
-      }
-      .postitSelectorSection .colorScheme .selectedColor {
-        width: 25px;
-        height: 17px;
-        background-color: lightgrey;
-      }
-      .postitSelectorSection .colorScheme .colorOptions {
-        position: absolute;
-        left: 0;
-        border-top: 1px dashed black;
-        margin-top: 5px;
-        padding: 0 5px 10px;
-        background-color: grey;
-      }
-      .postitSelectorSection .colorScheme .colorOptions .option {
-        width: 25px;
-        height: 17px;
-        margin-top: 10px;
+        width: 50px;
+        height: 50px;
       }
       .postitSelectorTitle {
         text-align: center;
@@ -60,6 +37,15 @@
   <body>
     <form id="createBoard" onSubmit="app.createBoard(event, this); return false;">
       <div><label for="boardName">Board name: </label><input name="boardName"/></div>
+
+      <div class="postitSelectorSection">
+        <input placeholder="Section title" class="name">
+        <br>
+        <input type="color" class="colorScheme" id="colorScheme" value="#ffff00">
+        <br>
+        <button onclick="app.postitForm.createPostitSection(event, this)">Add section</button>
+      </div>
+
       <div id="addPostitSection"></div>
       <button type="submit">Create board</button>
     </form>

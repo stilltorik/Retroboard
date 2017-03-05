@@ -32,7 +32,10 @@
       var aY = posY - diffY;
       move(elt,aX,aY);
     }
-    document.onwheel = function(e) {e.preventDefault()}
+    document.onwheel = function(e) {
+      e.preventDefault();
+      stopMoving(e, elt);
+    }
   };
   var stopMoving = function(){
     document.onmousemove = function(){};

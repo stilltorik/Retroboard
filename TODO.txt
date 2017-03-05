@@ -29,8 +29,9 @@ Else:
 - check input validation
 -- create dashboard page
 -- board page
+- use requestAnimationFrame: https://css-tricks.com/debouncing-throttling-explained-examples/
 !!!!! Careful with security issues!! Injections in title, section titles and usernames !!!!!
 
 Bugs:
-- Can (probably) still move locked postits
-- Can't put down postits when scrolling happens.
+- X Can (probably) still move locked postits
+- X Can't put down postits when scrolling happens.

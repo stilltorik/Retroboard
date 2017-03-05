@@ -177,7 +177,7 @@
     postit.setAttribute('data-index', config.index);
     var hasUserPlussed = config.thumbsUp.indexOf(app.username) !== -1;
     postit.innerHTML = [
-      '<div class="overlay"></div>',
+      '<div class="overlay" onmousedown="app.widgets.postits.stopPropagation(event)"></div>',
       '<div style="position: absolute; right: 3px;" onclick="app.widgets.postits.deleteLocal(this)">' + closingSymbol + '</div>',
       '<textarea class="postitText"',
       '  onkeyup="app.widgets.postits.updateDescription(this.parentElement, this.value)"',
@@ -220,6 +220,9 @@
       }
     );
   };
+  app.widgets.postits.stopPropagation = function (event) {
+    event.stopPropagation();
+  }
   app.widgets.postits.increaseZIndex = function(postit) {
     postit.style.zIndex = app.widgets.postits.nextZIndex;
     app.widgets.postits.nextZIndex++;
@@ -300,7 +303,7 @@
     document.body.removeChild(this.listPostitsElt[postitIndex]);
     this.listPostitsElt[postitIndex] = undefined;
   };
-  
+
   app.init();
 
 })();

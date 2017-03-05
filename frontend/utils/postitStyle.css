@@ -17,9 +17,7 @@
   border-radius: 2px 0 0;
 }
 .postit.locked .overlay {
-  display: none;
-}
-.postit.locked .overlay {
+  cursor: default;
   display: block;
   background-color: rgba(0,0,0,0.5);
   height: 100%;

@@ -38,7 +38,7 @@ db.once('open', function() {
 // routes
 
 app.get('/', function (req, res) {
- res.render('index.hbs', {board: '{}'});
+ res.render('homePage/board.hbs', {board: '{}'});
 });
 
 app.get('/createBoard', function (req, res) {
@@ -68,7 +68,7 @@ app.get('/:boardId/:boardTitle', function (req, res) {
           });
         }
       }
-      res.render('board/index.hbs', {board: JSON.stringify(newBoard)});
+      res.render('board/board.hbs', {board: JSON.stringify(newBoard)});
     }
   })
   .catch(function(err) {

@@ -1,54 +1,23 @@
 <html>
   <head>
     <title>Retroboard - Create board</title>
-    <style>
-      .postitSelectorContainer {
-        display: flex;
-        flex-direction: row;
-      }
-      .postitSelectorSection {
-        margin: 0 5px;
-        padding: 10px 5px;
-        width: 120px;
-      }
-      .postitSelectorSection .colorScheme {
-        width: 50px;
-        height: 50px;
-      }
-      .postitSelectorTitle {
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        display: block;
-        text-overflow: ellipsis;
-        margin-bottom: 10px;
-        font-size: 20px;
-      }
-      .postit {
-        height: 160px;
-        width: 120px;
-        border-radius: 5px;
-        margin: 0 auto;
-        box-shadow: 2px 2px 4px #666666;
-        position: relative;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/createBoard/createBoard.css">
   </head>
   <body>
-    <form id="createBoard" onSubmit="app.createBoard(event, this); return false;">
-      <div><label for="boardName">Board name: </label><input name="boardName"/></div>
+    <div class="content">
+      <form id="createBoard" onSubmit="app.createBoard(event, this); return false;">
+        <input class="boardName" placeholder="Board title" name="boardName"/>
 
-      <div class="postitSelectorSection">
-        <input placeholder="Section title" class="name">
-        <br>
-        <input type="color" class="colorScheme" id="colorScheme" value="#ffff00">
-        <br>
-        <button onclick="app.postitForm.createPostitSection(event, this)">Add section</button>
-      </div>
+        <div class="postitSelectorSection">
+          <input placeholder="Section title" class="postitNameInput postitSelectorInput" id="postitNameInput">
+          <input type="color" class="colorScheme postitSelectorInput" id="colorScheme" name="colorScheme" value="#ffff00">
+          <button class="addSectionButton" onclick="app.postitForm.createPostitSection(event, this)">Add section</button>
 
-      <div id="addPostitSection"></div>
-      <button type="submit">Create board</button>
-    </form>
+          <div id="addPostitSection" class="addPostitSection"></div>
+        </div>
+        <button class="submitBoardButton" type="submit">Create board</button>
+      </form>
+    </div>
   </body>
   <script type="text/javascript" src="/utils/ajax.js"></script>
   <script type="text/javascript" src="/createBoard/createBoard.js"></script>

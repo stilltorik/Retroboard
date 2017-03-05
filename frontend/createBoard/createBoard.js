@@ -1,12 +1,13 @@
 (function(){
+  var closingSymbol = '❌';
   var defaultPostitConfig = [
     {
       name: 'Good',
-      backgroundColor: '#F00A28'
+      backgroundColor: '#1DF00A'
     },
     {
       name: 'Bad',
-      backgroundColor: '#1DF00A'
+      backgroundColor: '#F00A28'
     },
     {
       name: 'Action items',
@@ -49,7 +50,7 @@
         config.name,
         '</div>'
       ].join('');
-      div.className = 'postitSelectorSection';
+      div.className = 'addedPostit';
       div.appendChild(this.createPostit(config, true));
       outerDiv.appendChild(div);
     }
@@ -63,12 +64,11 @@
     postit.parentElement.removeChild(postit);
   };
 
-  app.postitForm.createPostitSection = function(event, elt) {
+  app.postitForm.createPostitSection = function(event) {
     event.preventDefault();
-    var parent = elt.parentElement;
     var colorScheme = document.getElementById('colorScheme').value;
     app.postitsConfig.push({
-      name: parent.getElementsByClassName('name')[0].value,
+      name: document.getElementById('postitNameInput').value,
       backgroundColor: colorScheme
     });
     this.init();
@@ -79,7 +79,7 @@
     postit.style.backgroundColor = config.backgroundColor;
     postit.style.border = '1px solid ' + config.borderColor;
     postit.innerHTML =
-      '<div style="position: absolute; right: 3px; cursor: pointer" onclick="app.postitForm.delete(this)">x</div>';
+      '<div style="position: absolute; right: 3px; cursor: pointer" onclick="app.postitForm.delete(this)">' + closingSymbol + '</div>';
 
     return postit;
   };

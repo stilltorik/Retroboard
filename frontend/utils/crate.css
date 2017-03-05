@@ -1,0 +1,15 @@
+.crate-close {
+  cursor: pointer;
+  float: right;
+  margin: 12px 8px;
+}
+.crate-close:after {
+  content: '❌';
+}
+.crate-body {
+  background-color: white;
+  color: black;
+  padding: 10px 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+}

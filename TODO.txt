@@ -20,15 +20,15 @@ Else:
 - X add board name
 - X remove bottom part
 - X remove add postit type on board
-- ? remove postit type in createBoard page
+- X remove postit type in createBoard page
 - X init board
 - X Home page
 - X prettifying
 - clean code (add/show postit type section)
-- check input validation
--- create dashboard page
--- board page
-- use requestAnimationFrame: https://css-tricks.com/debouncing-throttling-explained-examples/
+- X check input validation
+-- X create dashboard page
+-- X board page
+- X use requestAnimationFrame: https://css-tricks.com/debouncing-throttling-explained-examples/ (No use)
 !!!!! Careful with security issues!! Injections in title, section titles and usernames !!!!!
 
 Bugs:
@@ -36,3 +36,4 @@ Bugs:
 - X Can't put down postits when scrolling happens.
 - X We can unlock postits that we didn't lock ourselves
 - X Locked postits remain locked if closing the window/tab
+- When a postit is outside the visible window at started, there is no scrollbar

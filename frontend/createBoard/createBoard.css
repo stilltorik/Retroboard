@@ -1,0 +1,75 @@
+
+.content {
+  margin: 0 auto;
+  max-width: 583px;
+}
+input {
+  padding: 5px;
+}
+button {
+  border-radius: 4px;
+  background: linear-gradient(rgb(68, 199, 103) 5%, rgb(92, 191, 42) 100%) rgb(68, 199, 103);
+  border: 1px solid rgb(24, 171, 41);
+  display: block;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+  padding: 14px 31px;
+  text-decoration: none;
+  text-shadow: rgb(47, 102, 39) 0px 1px 0px;
+  margin: 0 auto;
+}
+.content .boardName {
+  width: 100%;
+  font-size: 20px;
+}
+.postitSelectorContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.postitSelectorSection {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid lightgrey;
+}
+.postitNameInput {
+  display: block;
+  margin: 0 auto 10px;
+}
+.postitSelectorSection .colorScheme {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 0 auto 10px;
+}
+.addSectionButton {
+  font-size: 14px;
+  padding: 7px 15px;
+}
+.addPostitSection {
+  margin-top: 20px;
+}
+.postitSelectorTitle {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.addedPostit {
+  margin: 10px;
+}
+.postit {
+  height: 160px;
+  width: 120px;
+  border-radius: 5px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 4px #666666;
+  position: relative;
+}
+.submitBoardButton {
+  margin-top: 20px;
+}

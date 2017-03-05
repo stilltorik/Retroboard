@@ -1,0 +1,79 @@
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+}
+.usernameMode {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+.username {
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  z-index: 10000000000;
+}
+.flexChild {
+  margin: 0 auto;
+}
+.usernameLayer {
+  align-self: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+.usernameLayer, .usernameLayer input, .usernameLayer button {
+  font-size: 32px;
+}
+#postitContainer {
+  display: flex;
+  margin-bottom: 15px;
+}
+.postitSelectorSection {
+  margin: 0 5px;
+  padding: 10px 5px;
+  width: 120px;
+}
+.postitSelectorSection .colorScheme {
+  position: relative;
+  background-color: grey;
+  border-radius: 2px;
+  padding: 6px;
+  width: 25px;
+  cursor: pointer;
+}
+.postitSelectorSection .colorScheme .selectedColor {
+  width: 25px;
+  height: 17px;
+  background-color: lightgrey;
+}
+.postitSelectorSection .colorScheme .colorOptions {
+  position: absolute;
+  left: 0;
+  border-top: 1px dashed black;
+  margin-top: 5px;
+  padding: 0 5px 10px;
+  background-color: grey;
+}
+.postitSelectorSection .colorScheme .colorOptions .option {
+  width: 25px;
+  height: 17px;
+  margin-top: 10px;
+}
+.postitSelectorTitle {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+#board {
+  border: 2px solid black;
+  border-radius: 10px;
+}

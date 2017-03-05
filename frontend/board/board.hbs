@@ -1,7 +1,8 @@
 <html>
   <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="/board/index.css">
+    <link rel="stylesheet" type="text/css" href="/board/board.css">
+    <link rel="stylesheet" type="text/css" href="/utils/postitStyle.css">
   </head>
   <body class="flexContainer usernameMode">
     <div id="getUsernameLayer" class="username">
@@ -18,7 +19,6 @@
   <script>
     (function() {
       var board = {{{board}}};
-      console.log(board);
       document.title = 'Retroboard - ' + board.title;
       document.getElementById('titleSection').innerHTML = board.title;
       window.app = {
@@ -38,5 +38,5 @@
     })();
   </script>
   <script src="/board/dragAndDrop.js"></script>
-  <script src="/board/index.js"></script>
+  <script src="/board/board.js"></script>
 </html>

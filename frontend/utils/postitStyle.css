@@ -1,0 +1,65 @@
+
+.postit {
+  height: 160px;
+  width: 120px;
+  border-radius: 5px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 4px #666666;
+  cursor: pointer;
+}
+.postit[title]:hover:before {
+  content: attr(title);
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background-color: white;
+  font-size: 8px;
+  border-radius: 2px 0 0;
+}
+.postit.locked .overlay {
+  display: none;
+}
+.postit.locked .overlay {
+  display: block;
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.postit textarea {
+  font-family: sans-serif;
+}
+.postit .plusDetails {
+  background-color: white;
+  font-weight: bold;
+  margin-left: 5px;
+  padding: 0 5px;
+}
+.postit .hasPlus {
+  color: black;
+}
+.postit .noPlus {
+  color: grey;
+}
+.postitText {
+  background-color: rgba(255, 255, 255, 0.5);;
+  border: none;
+  margin: 20px 5px 10px;
+  width: calc(100% - 10px);
+  height: 110px;
+  resize: none;
+  font-size: 16px;
+}
+.dragging{
+  position: fixed;
+  background-color: black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}

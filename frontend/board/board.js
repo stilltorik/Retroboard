@@ -1,4 +1,5 @@
 (function(){
+  var closingSymbol = '❌';
   app.init = function() {
     app.widgets.username.init();
     app.widgets.postitSelector.init();
@@ -113,7 +114,7 @@
     for (var i = 0; i < app.config.postitSections.length; i++) {
       var config = app.config.postitSections[i];
       var div = document.createElement('div');
-      div.innerHTML = '<div class="postitSelectorTitle">' + config.name + '</div>';
+      div.innerHTML = '<div class="postitSelectorTitle" title="' + config.name + '">' + config.name + '</div>';
       div.className = 'postitSelectorSection';
       div.appendChild(this.createPostit(config, true));
       this.container.appendChild(div);
@@ -177,7 +178,7 @@
     var hasUserPlussed = config.thumbsUp.indexOf(app.username) !== -1;
     postit.innerHTML = [
       '<div class="overlay"></div>',
-      '<div style="position: absolute; right: 3px;" onclick="app.widgets.postits.deleteLocal(this)">x</div>',
+      '<div style="position: absolute; right: 3px;" onclick="app.widgets.postits.deleteLocal(this)">' + closingSymbol + '</div>',
       '<textarea class="postitText"',
       '  onkeyup="app.widgets.postits.updateDescription(this.parentElement, this.value)"',
       '  onblur="app.websocket.unlockPostit(this.parentElement.getAttribute(\'data-index\'))">' +
@@ -188,9 +189,9 @@
       '" data-plus-names="' +
       config.thumbsUp.join(' ') +
       '">',
-      '  <span class="' +
+      '  <span class="plusDetails ' +
       (hasUserPlussed? 'hasPlus': 'noPlus') +
-      '" onclick="app.widgets.postits.plus(this)">l3</span>',
+        '" onclick="app.widgets.postits.plus(this)">+ ' + config.thumbsUp.length + '</span>',
       '</div>'
     ].join('\n');
     postit.style.top = config.top;
@@ -254,7 +255,7 @@
     }
   };
   app.widgets.postits.plus = function(elt, isPlus) {
-    var isPlus = elt.className === 'noPlus';
+    var isPlus = elt.className.indexOf(' noPlus') !== -1;
     var names = elt.parentElement.getAttribute('data-plus-names');
     var username = app.username;
     var postitIndex = elt.parentElement.parentElement.getAttribute('data-index');
@@ -262,28 +263,33 @@
       alert('No username!!');
     } else if (isPlus) {
       if (names.indexOf(username) === -1) {
-        addPlus(elt.parentElement, username);
+        names = addPlus(elt.parentElement, username);
         app.websocket.plus(postitIndex, username);
-        elt.className = 'hasPlus';
+        elt.className = 'plusDetails hasPlus';
       }
     } else {
       if (names.indexOf(username) !== -1) {
-        removePlus(elt.parentElement, username);
+        names = removePlus(elt.parentElement, username);
         app.websocket.minus(postitIndex, username);
-        elt.className = 'noPlus';
+        elt.className = 'plusDetails noPlus';
       }
     }
+    names = names.trim();
+    var numberPlus = names === ''? 0 : names.trim().split(/\s+/).length;
+    elt.innerHTML = '+ ' + numberPlus;
   };
   var addPlus = function(domElt, name) {
     var listNames = (domElt.getAttribute('data-plus-names') || '') + ' ' + name;
     domElt.setAttribute('data-plus-names', listNames);
     domElt.title = listNames;
+    return listNames;
   };
   var removePlus = function(domElt, name) {
     var listNames = domElt.getAttribute('data-plus-names') || '';
     listNames = listNames.replace(new RegExp(name,'g'), '').replace(/\s+/g, ' ');
     domElt.setAttribute('data-plus-names', listNames);
     domElt.title = listNames;
+    return listNames;
   };
   app.widgets.postits.deleteLocal = function(elt) {
     var postit = elt.parentElement;
@@ -294,32 +300,7 @@
     document.body.removeChild(this.listPostitsElt[postitIndex]);
     this.listPostitsElt[postitIndex] = undefined;
   };
-
-  // app.widgets.userDetails = {
-  //   section: document.getElementById('userDetails'),
-  //   name: ''
-  // };
-  // app.widgets.userDetails.init = function() {
-  //   this.section.innerHTML = this.emptySection();
-  // };
-  // app.widgets.userDetails.emptySection = function() {
-  //   return [
-  //     '  <input type="text" max-length="20" placeholder="Your name"',
-  //     '   class="nameInput" onBlur="app.widgets.userDetails.updateName(this)">'
-  //   ].join('\n');
-  // };
-  // app.widgets.userDetails.updateName = function(elt) {
-  //   this.name = elt.value;
-  // };
-  // app.widgets.userDetails.toggleSection = function(elt) {
-  //   var parentClasses = elt.parentElement.className;
-  //   var openIndex = parentClasses.indexOf('open');
-  //   if (openIndex != -1) {
-  //     elt.parentElement.className = parentClasses.substring(0, openIndex) + 'closed';
-  //   } else {
-  //     elt.parentElement.className = parentClasses.substring(0, parentClasses.indexOf('closed')) + 'open';
-  //   }
-  // };
+  
   app.init();
 
 })();

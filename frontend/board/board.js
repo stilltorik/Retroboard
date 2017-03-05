@@ -1,5 +1,6 @@
 (function(){
   var closingSymbol = '❌';
+  var lockedPostitsByUser = [];
   app.init = function() {
     app.widgets.username.init();
     app.widgets.postitSelector.init();
@@ -8,7 +9,11 @@
     app.widgets.postits.init();
     app.websocket.init();
   };
-
+  window.addEventListener('unload', function(event) {
+    for (var postitIndex in lockedPostitsByUser) {
+      app.websocket.unlockPostit(postitIndex);
+    }
+  });
   app.websocket = {};
   app.websocket.init = function() {
     var host = window.document.location.host.replace(/:.*/, '');
@@ -34,9 +39,11 @@
   };
   app.websocket.lockPostit = function(postitIndex) {
     operation(postitIndex, 'lock');
+    lockedPostitsByUser[postitIndex] = true;
   };
   app.websocket.unlockPostit = function(postitIndex) {
     operation(postitIndex, 'unlock');
+    delete lockedPostitsByUser[postitIndex];
   };
   app.websocket.deletePostit = function(postitIndex) {
     operation(postitIndex, 'deletePostit');
@@ -177,7 +184,6 @@
     postit.setAttribute('data-index', config.index);
     var hasUserPlussed = config.thumbsUp.indexOf(app.username) !== -1;
     postit.innerHTML = [
-      '<div class="overlay" onmousedown="app.widgets.postits.stopPropagation(event)"></div>',
       '<div style="position: absolute; right: 3px;" onclick="app.widgets.postits.deleteLocal(this)">' + closingSymbol + '</div>',
       '<textarea class="postitText"',
       '  onkeyup="app.widgets.postits.updateDescription(this.parentElement, this.value)"',
@@ -192,7 +198,11 @@
       '  <span class="plusDetails ' +
       (hasUserPlussed? 'hasPlus': 'noPlus') +
         '" onclick="app.widgets.postits.plus(this)">+ ' + config.thumbsUp.length + '</span>',
-      '</div>'
+      '</div>',
+      '<div class="overlay"',
+      '  onmousedown="app.widgets.postits.stopPropagation(event)"',
+      '  onmouseup="app.widgets.postits.stopPropagation(event)"',
+      '  onclick="app.widgets.postits.stopPropagation(event)"></div>'
     ].join('\n');
     postit.style.top = config.top;
     postit.style.left = config.left;

@@ -7,7 +7,6 @@ websockets:
 
 on postit, add:
 - X delete option
-- force unlock
 
 Lock on:
 - X moving
@@ -35,3 +34,5 @@ Else:
 Bugs:
 - X Can (probably) still move locked postits
 - X Can't put down postits when scrolling happens.
+- X We can unlock postits that we didn't lock ourselves
+- X Locked postits remain locked if closing the window/tab

@@ -1,9 +1,50 @@
 <html>
   <head>
-    <title>Retroboard - Home page</title>
+    <title>e-retrospective - Home page</title>
+    <link rel="stylesheet" type="text/css" href="/homePage/homePage.css">
+    <link rel="stylesheet" type="text/css" href="/utils/button.css">
+    <link rel="stylesheet" type="text/css" href="/utils/postitStyle.css">
 
   </head>
   <body>
-    <a href="/createBoard">Create your own board!</a>
+    <div class="title">
+      <span class="e">e</span><!--
+      --><span class="retrospective">-retrospective</span>
+    </div>
+    <button class="createBoardButton">
+      <a href="/createBoard">Create your own board!</a>
+    </button>
+    <div class="content">
+      <table class="description">
+        <tr>
+          <th style="width: 45%">Create your board...</th>
+          <th style="width: 5%; text-align: center"></th>
+          <th style="width: 50%">... and there you go!</th>
+        </tr>
+        <tr>
+          <td class="images"><img src="homePage/createBoard.png"></td>
+          <td style="text-align: center; font-size: 30px;">⇒</td>
+          <td class="images"><img src="homePage/board.png"></td>
+        </tr>
+      </table>
+      <div class="links" style="position: relative">
+        {{#each postits}}
+          <div
+            {{#if link}}
+              onclick="window.open('{{link}}', '_blank');" class="postit withLink"
+            {{else}}
+              class="postit"
+            {{/if}}
+            style="background-color: {{color}}; position: absolute; top: {{top}}; left: {{left}}">
+            <textarea class="postitText" disabled>{{this.text}}</textarea>
+            <div class="plus">
+              <span class="plusDetails noPlus">+ {{plus}}</span>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+
   </body>
 </html>

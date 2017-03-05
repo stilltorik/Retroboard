@@ -38,7 +38,89 @@ db.once('open', function() {
 // routes
 
 app.get('/', function (req, res) {
- res.render('homePage/homePage.hbs', {board: '{}'});
+  var postits = [
+    {
+      text: 'Scrum retrospective',
+      color: 'rgb(240, 10, 40)',
+      top: '5px',
+      left: '70px',
+      plus: 5
+    }, {
+      text: 'Brainstorming',
+      color: 'rgb(240, 10, 40)',
+      top: '5px',
+      left: '200px',
+      plus: 2
+    }, {
+      text: 'Information sharing',
+      color: 'rgb(240, 10, 40)',
+      top: '116px',
+      left: '5px',
+      plus: 4
+    }, {
+      text: 'To do lists',
+      color: 'rgb(240, 10, 40)',
+      top: '116px',
+      left: '140px',
+      plus: 2
+    }, {
+      text: 'Etc...',
+      color: 'rgb(240, 10, 40)',
+      top: '116px',
+      left: '280px',
+      plus: 3
+    }, {
+      text: 'Personalise your board',
+      color: 'rgb(29, 240, 10)',
+      top: '50px',
+      left: '450px',
+      plus: 4
+    }, {
+      text: 'Create/delete postits',
+      color: 'rgb(29, 240, 10)',
+      top: '50px',
+      left: '575px',
+      plus: 5
+    }, {
+      text: 'Move postits',
+      color: 'rgb(29, 240, 10)',
+      top: '215px',
+      left: '450px',
+      plus: 2
+    }, {
+      text: 'Upvote',
+      color: 'rgb(29, 240, 10)',
+      top: '215px',
+      left: '575px',
+      plus: 3
+    }, {
+      text: 'Free to use!',
+      color: 'rgb(20, 23, 222)',
+      top: '300px',
+      left: '130px',
+      plus: 5
+    }, {
+      text: 'No account needed',
+      color: 'rgb(20, 23, 222)',
+      top: '350px',
+      left: '240px',
+      plus: 3
+    }, {
+      text: 'Open source - click to contribute',
+      link: 'https://github.com/stilltorik/Retroboard',
+      color: 'rgb(20, 23, 222)',
+      top: '437px',
+      left: '170px',
+      plus: 2
+    }, {
+      text: 'Optimized for:\n • Chrome\n • Firefox',
+      color: 'rgb(255, 255, 0)',
+      top: '417px',
+      left: '520px',
+      plus: 2
+    }
+  ]
+ res.render('homePage/homePage.hbs', {postits: postits});
 });
 
 app.get('/createBoard', function (req, res) {

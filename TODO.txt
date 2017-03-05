@@ -6,7 +6,7 @@ websockets:
 - Update databaseBoard update to use update rather than save
 
 on postit, add:
-- delete option
+- X delete option
 - force unlock
 
 Lock on:
@@ -23,9 +23,12 @@ Else:
 - X remove add postit type on board
 - ? remove postit type in createBoard page
 - X init board
-- Home page
-- prettifying
+- X Home page
+- X prettifying
 - clean code (add/show postit type section)
+- check input validation
+-- create dashboard page
+-- board page
 !!!!! Careful with security issues!! Injections in title, section titles and usernames !!!!!
 
 Bugs:

@@ -1,0 +1,73 @@
+.title {
+  text-align: center;
+  margin: 20px 0 30px;
+}
+@media (max-width: 900px) {
+  .title {
+    text-align: left;
+  }
+}
+.e {
+  font-family: cursive;
+  font-size: 30px;
+}
+.retrospective {
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  text-transform: uppercase;
+  font-size: 29px;
+  font-weight: bold;
+}
+.createBoardButton {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+}
+.createBoardButton a {
+  color: inherit;
+  text-decoration: initial;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.content .description, .content .links {
+  min-width: 700px;
+  width: 50%;
+}
+.content .links {
+  width: calc(50% - 20px);
+}
+@media (min-width: 700px) and (max-width: 1470px) {
+  .content .description, .content .links {
+    width: 100%;
+  }
+}
+.content .description {
+  table-layout:fixed;
+  margin-right: 20px;
+}
+.content .description th {
+  font-size: 20px;
+  padding-bottom: 8px;
+  font-weight: normal;
+}
+.content .description .images {
+  vertical-align: top;
+}
+.content .description img {
+  width: calc(100% - 40px);
+  border-radius: 5px;
+  box-shadow: inset 0 0 20px black;
+  padding: 20px;
+}
+.content .postit {
+  cursor: initial;
+}
+.postit.withLink, .postit.withLink textarea {
+  cursor: pointer;
+}
+.content .postit textarea {
+  color: black;
+}

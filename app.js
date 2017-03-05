@@ -38,7 +38,7 @@ db.once('open', function() {
 // routes
 
 app.get('/', function (req, res) {
- res.render('homePage/board.hbs', {board: '{}'});
+ res.render('homePage/homePage.hbs', {board: '{}'});
 });
 
 app.get('/createBoard', function (req, res) {

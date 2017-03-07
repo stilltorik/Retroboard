@@ -109,8 +109,12 @@
     }
   };
   app.widgets.username.submit = function() {
-    if (!this.input.value) {
+    var username = this.input.value.trim();
+    if (!username) {
       alert('No name entered!');
+      return;
+    } else if (username.indexOf(' ') !== -1) {
+      alert('Spaces are not allowed in usernames');
       return;
     }
     localStorage.setItem('username', this.input.value);
@@ -281,35 +285,40 @@
     if (!username) {
       alert('No username!!');
     } else if (isPlus) {
-      if (names.indexOf(username) === -1) {
-        names = addPlus(elt.parentElement, username);
+      if (!containsWord(names, username)) {
+        addPlus(elt.parentElement, username);
         app.websocket.plus(postitIndex, username);
         elt.className = 'plusDetails hasPlus';
       }
-    } else {
-      if (names.indexOf(username) !== -1) {
-        names = removePlus(elt.parentElement, username);
-        app.websocket.minus(postitIndex, username);
-        elt.className = 'plusDetails noPlus';
-      }
+    } else if (containsWord(names, username)) {
+      removePlus(elt.parentElement, username);
+      app.websocket.minus(postitIndex, username);
+      elt.className = 'plusDetails noPlus';
     }
-    names = names.trim();
-    var numberPlus = names === ''? 0 : names.trim().split(/\s+/).length;
-    elt.innerHTML = '+ ' + numberPlus;
+
+  };
+  var containsWord = function(list, word) {
+    var regexp = new RegExp('\\b' + word + '\\b', 'g');
+    return regexp.test(list);
   };
   var addPlus = function(domElt, name) {
     var listNames = (domElt.getAttribute('data-plus-names') || '') + ' ' + name;
     domElt.setAttribute('data-plus-names', listNames);
     domElt.title = listNames;
-    return listNames;
+    updateCount(domElt.parentElement, listNames);
   };
   var removePlus = function(domElt, name) {
     var listNames = domElt.getAttribute('data-plus-names') || '';
-    listNames = listNames.replace(new RegExp(name,'g'), '').replace(/\s+/g, ' ');
+    listNames = listNames.replace(new RegExp('\\b' + name + '\\b','g'), '').replace(/\s+/g, ' ');
     domElt.setAttribute('data-plus-names', listNames);
     domElt.title = listNames;
-    return listNames;
+    updateCount(domElt.parentElement, listNames);
   };
+  var updateCount = function(postitElt, listNames) {
+    listNames = listNames.trim();
+    var numberPlus = listNames === ''? 0 : listNames.trim().split(/\s+/).length;
+    postitElt.getElementsByClassName('plusDetails')[0].innerHTML = '+ ' + numberPlus;
+  }
   app.widgets.postits.deleteLocal = function(elt) {
     var postit = elt.parentElement;
     var index = postit.getAttribute('data-index');

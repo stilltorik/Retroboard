@@ -37,3 +37,5 @@ Bugs:
 - X We can unlock postits that we didn't lock ourselves
 - X Locked postits remain locked if closing the window/tab
 - When a postit is outside the visible window at started, there is no scrollbar
+- X If space in name, count of +s wrong
+- X adding +s not reflected in other people windows

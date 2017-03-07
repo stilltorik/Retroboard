@@ -53,7 +53,6 @@
       setBody: message,
       closeActions: {button: true, clickOut: true}
     });
-    //alert(message);
   };
 
   app.postitForm.init = function() {

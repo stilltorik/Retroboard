@@ -1,6 +1,7 @@
 /*
-  # Coded by /thezillion/
+  Based on
   https://thezillion.wordpress.com/2012/09/27/javascript-draggable-2-no-jquery/
+  But heavily changed
 */
 (function() {
   var is_element_having_set_coordinates = function(el){

@@ -17,7 +17,14 @@
   app.websocket = {};
   app.websocket.init = function() {
     var host = window.document.location.host.replace(/:.*/, '');
-    app.websocket.ws = new WebSocket('ws://' + host + ':3000');
+    if (window.document.location.port) {
+      var port = ':' + window.document.location.port;
+    } else if (document.location.protocol === 'http:') {
+      port = ':80';
+    } else {
+      port = ':443';
+    }
+    app.websocket.ws = new WebSocket('ws://' + host + port);
     app.websocket.ws.onmessage = function(event) {
       var message = JSON.parse(event.data);
       if (message.type === 'postitCreated') {
@@ -173,7 +180,6 @@
         left: parent.offsetLeft + 5,
         zIndex: app.widgets.postits.nextZIndex
     });
-    //loader?
   };
   app.widgets.postits.addPostit = function(config) {
     var postit = document.createElement('div');

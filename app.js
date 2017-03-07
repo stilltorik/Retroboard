@@ -8,7 +8,7 @@ var WebSocketServer = require('ws').Server;
 var wss = new WebSocketServer({ server: server });
 var express = require('express');
 var app = express();
-var port = 3000;
+var port = 3001;
 
 var board = require('./databaseBoard');
 
@@ -38,6 +38,7 @@ db.once('open', function() {
 // routes
 
 app.get('/', function (req, res) {
+  // TODO move to config json file
   var postits = [
     {
       text: 'Scrum retrospective',

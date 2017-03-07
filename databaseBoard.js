@@ -145,19 +145,6 @@ exports.createPostit = function(config) {
       error: err
     };
   });
-  // return Board.update({_id: config._id}, {$push: {postits: postit}})
-  // .then(function(board) {
-  //   return {
-  //     status: 200,
-  //     index: config
-  //   };
-  // })
-  // .catch(function(err) {
-  //   return {
-  //     status: 400,
-  //     error: err
-  //   };
-  // });
 };
 
 exports.updatePostit = function(config) {

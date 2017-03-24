@@ -29,8 +29,8 @@ Else:
 -- X create dashboard page
 -- X board page
 - X use requestAnimationFrame: https://css-tricks.com/debouncing-throttling-explained-examples/ (No use)
-- Further check for potential injections in title, section titles and usernames !!!!!
-- google analytics
+- X Further check for potential injections in title, section titles and usernames
+- X analytics
 - robots.txt
 - link to about page
 - Link to test page

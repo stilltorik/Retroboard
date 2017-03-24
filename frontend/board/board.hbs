@@ -1,8 +1,9 @@
 <html>
   <head>
-    <title></title>
+    <title>e-retrospective - {{board.title}}</title>
     <link rel="stylesheet" type="text/css" href="/board/board.css">
     <link rel="stylesheet" type="text/css" href="/utils/postitStyle.css">
+    <link rel="stylesheet" type="text/css" href="/utils/commonStyle.css">
   </head>
   <body class="flexContainer usernameMode">
     <div id="getUsernameLayer" class="username">
@@ -19,7 +20,7 @@
   <script>
     (function() {
       var board = {{{board}}};
-      document.title = 'Retroboard - ' + board.title;
+      document.title = 'e-retrospective - ' + board.title;
       document.getElementById('titleSection').innerHTML = board.title;
       window.app = {
         widgets: {},

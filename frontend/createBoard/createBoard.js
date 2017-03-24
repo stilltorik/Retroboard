@@ -45,7 +45,7 @@
         alert(error);
       } else {
         tracking.trackCreateDashboard({nbPostitTypes: nbPostits});
-        window.location.href = '/' + response._id + '/' + response.title.replace(/ /g,"_");
+        window.location.href = '/board/' + response._id + '/' + response.title.replace(/ /g,"_");
       }
     });
   };

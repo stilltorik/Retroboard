@@ -129,7 +129,7 @@ app.get('/createBoard', function (req, res) {
 });
 app.post('/api/createBoard', board.addBoard);
 
-app.get('/:boardId/:boardTitle', function (req, res) {
+app.get('/board/:boardId/:boardTitle', function (req, res) {
   board.getBoard({_id: req.params.boardId})
   .then(function(board) {
     if(board.status !== 200) {

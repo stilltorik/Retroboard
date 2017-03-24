@@ -29,6 +29,11 @@
 .usernameLayer, .usernameLayer input, .usernameLayer button {
   font-size: 32px;
 }
+.export {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+}
 #postitContainer {
   display: flex;
   margin-bottom: 15px;

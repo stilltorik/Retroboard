@@ -32,8 +32,9 @@ Else:
 - X Further check for potential injections in title, section titles and usernames
 - X analytics
 - robots.txt
-- link to about page
 - Link to test page
+- X export in CSV
+- link to about page
 - proper build for frontend
 
 Bugs:

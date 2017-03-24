@@ -328,6 +328,74 @@
     document.body.removeChild(this.listPostitsElt[postitIndex]);
     this.listPostitsElt[postitIndex] = undefined;
   };
+  app.export = {};
+  app.export.export = function() {
+    var data = [];
+    var sections = app.config.postitSections;
+    var postits = app.widgets.postits.listPostitsElt;
+    var postitsByColor = {};
+    var colorList = [];
+    data.push('General information,Title,id');
+    data.push('\n');
+    data.push(',');
+    data.push(app.config.title);
+    data.push(',');
+    data.push(app.config.boardId);
+    data.push('\n\n');
+
+    for (var i = 0; i < sections.length; i++) {
+      var color = sections[i].backgroundColor.toLowerCase()
+      postitsByColor[color] = [];
+      colorList[color] = sections[i].name;
+    }
+    for (postitId in postits) {
+      var postit = postits[postitId];
+      var postedBy = postit.title.replace('Created by ', '');
+      var postitColor = rgb2hex(postit.style.backgroundColor);
+      var names = postit.getElementsByClassName('plus')[0].getAttribute('data-plus-names').trim().split(/\s+/);
+      postitsByColor[postitColor].push(
+        ',,' +
+        postedBy + ',' +
+        postit.getElementsByTagName('textarea')[0].value + ',' +
+        names.join(' ')
+      );
+    }
+    data.push('Section name, color, Created by, Description, Upvoted by\n');
+    for (color in postitsByColor) {
+      data.push(colorList[color] + ',' + color + '\n');
+      data.push(postitsByColor[color].join('\n'));
+      data.push('\n');
+    }
+    downloadCSV(data.join(''));
+  };
+  var downloadCSV = function(csvContent) {
+    var filename = app.config.title + '.csv';
+    var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    if (navigator.msSaveBlob) { // IE 10+
+        navigator.msSaveBlob(blob, filename);
+    } else {
+      var link = document.createElement('a');
+      if (link.download !== undefined) { // feature detection
+          // Browsers that support HTML5 download attribute
+          var url = URL.createObjectURL(blob);
+          link.setAttribute('href', url);
+          link.setAttribute('download', filename);
+          link.style.visibility = 'hidden';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      }
+    }
+  };
+  var rgb2hex = function(rgb) {
+    if (/^#[0-9A-F]{6}$/i.test(rgb)) return rgb;
+
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+        return ('0' + parseInt(x).toString(16)).slice(-2);
+    }
+    return ('#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3])).toLowerCase();
+  };
 
   app.init();
 

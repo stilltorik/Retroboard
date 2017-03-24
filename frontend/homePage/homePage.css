@@ -22,10 +22,6 @@
   top: 5px;
   right: 5px;
 }
-.createBoardButton a {
-  color: inherit;
-  text-decoration: initial;
-}
 .content {
   display: flex;
   flex-direction: row;

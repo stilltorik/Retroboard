@@ -2,16 +2,18 @@
   <head>
     <title>e-retrospective - {{board.title}}</title>
     <link rel="stylesheet" type="text/css" href="/board/board.css">
+    <link rel="stylesheet" type="text/css" href="/utils/button.css">
     <link rel="stylesheet" type="text/css" href="/utils/postitStyle.css">
     <link rel="stylesheet" type="text/css" href="/utils/commonStyle.css">
     <script type="text/javascript" src="/utils/tracking.js"></script>
   </head>
   <body class="flexContainer usernameMode">
+    <button class="export" onclick="app.export.export()">Export to CSV</button>
     <div id="getUsernameLayer" class="username">
       <div class="usernameLayer">
         <label for="username"> Enter your username</label>
         <input name="username" id="username" placeholder="Username"/>
-        <button onclick="app.widgets.username.submit()">Submit</button>
+        <button class="defaultButton" onclick="app.widgets.username.submit()">Submit</button>
       </div>
     </div>
     <div class="flexChild" style="font-size: 32px" id="titleSection"></div>

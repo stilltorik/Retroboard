@@ -160,6 +160,13 @@ app.get('/:boardId/:boardTitle', function (req, res) {
 });
 
 
+app.get('/listBoards', function (req, res) {
+  board.getAllBoards()
+  .then(function(boards) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(boards));
+  });
+});
 // Websockets
 var id = 0;
 wss.on('connection', function (ws) {

@@ -43,6 +43,28 @@ exports.addBoard = function(req, res) {
 	});
 };
 
+exports.getAllBoards = function() {
+  return Board.find()
+  .then(function(boards) {
+    var resBoards = [];
+    for (var i = 0; i < boards.length; i++) {
+      resBoards.push({
+        id: boards[i].id,
+        title: boards[i].title,
+        nbPostits: boards[i].postits.length
+      });
+    }
+    return resBoards;
+  })
+  .catch(function(err) {
+    console.log(err);
+    return {
+      status: 400,
+      error: err
+    };
+  });
+}
+
 exports.getBoard = function(config) {
   return Board.find({_id: config._id}).limit(1)
   .then(function(board) {

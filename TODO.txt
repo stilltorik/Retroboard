@@ -34,6 +34,7 @@ Else:
 - robots.txt
 - link to about page
 - Link to test page
+- proper build for frontend
 
 Bugs:
 - X Can (probably) still move locked postits

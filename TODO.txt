@@ -31,10 +31,10 @@ Else:
 - X use requestAnimationFrame: https://css-tricks.com/debouncing-throttling-explained-examples/ (No use)
 - X Further check for potential injections in title, section titles and usernames
 - X analytics
-- robots.txt
-- Link to test page
 - X export in CSV
 - link to about page
+- robots.txt
+- Link to test page
 - proper build for frontend
 
 Bugs:
@@ -45,3 +45,4 @@ Bugs:
 - When a postit is outside the visible window at started, there is no scrollbar
 - X If space in name, count of +s wrong
 - X adding +s not reflected in other people windows
+- some postits scroll, other don't. Why?

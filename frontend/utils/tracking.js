@@ -20,3 +20,6 @@ tracking.trackCreateDashboard = function (config) {
     nbPostitTypes: config.nbPostitTypes
   });
 };
+tracking.trackExportCSV = function (config) {
+  woopra.track("exportCSV", {});
+};

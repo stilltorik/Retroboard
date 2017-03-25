@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>e-retrospective - About</title>
+  </head>
+  <body>
+    <div class="content">
+      <form id="createBoard" onSubmit="app.createBoard(event, this); return false;">
+        <input class="boardName" placeholder="Board title" name="boardName"/>
+
+        <div class="postitSelectorSection">
+          <input placeholder="Section title" class="postitNameInput postitSelectorInput" id="postitNameInput">
+          <input type="color" class="colorScheme postitSelectorInput" id="colorScheme" name="colorScheme" value="#ffff00">
+          <button class="addSectionButton" onclick="app.postitForm.createPostitSection(event, this)">Add section</button>
+
+          <div id="addPostitSection" class="addPostitSection"></div>
+        </div>
+        <button class="submitBoardButton" type="submit">Create board</button>
+      </form>
+    </div>
+  </body>
+</html>

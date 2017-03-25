@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var WebSocketServer = require('ws').Server;
 var wss = new WebSocketServer({ server: server });
 var express = require('express');
+var hbs = require('hbs');
 var app = express();
 var port = 3001;
 
@@ -15,6 +16,7 @@ var board = require('./databaseBoard');
 
 app.set('views', __dirname + '/frontend');
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/frontend/utils/templates/partials');
 
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.json());

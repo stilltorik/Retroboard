@@ -1,21 +1,86 @@
 <html>
   <head>
     <title>e-retrospective - About</title>
+    <link rel="stylesheet" type="text/css" href="/utils/commonStyle.css">
+    <link rel="stylesheet" type="text/css" href="/about/about.css">
+    <link rel="stylesheet" type="text/css" href="/utils/button.css">
+    <link rel="stylesheet" type="text/css" href="/utils/crate.css">
+    <script type="text/javascript" src="/utils/tracking.js"></script>
   </head>
   <body>
+    <div class="title">{{> title }}</div>
     <div class="content">
-      <form id="createBoard" onSubmit="app.createBoard(event, this); return false;">
-        <input class="boardName" placeholder="Board title" name="boardName"/>
-
-        <div class="postitSelectorSection">
-          <input placeholder="Section title" class="postitNameInput postitSelectorInput" id="postitNameInput">
-          <input type="color" class="colorScheme postitSelectorInput" id="colorScheme" name="colorScheme" value="#ffff00">
-          <button class="addSectionButton" onclick="app.postitForm.createPostitSection(event, this)">Add section</button>
-
-          <div id="addPostitSection" class="addPostitSection"></div>
+      <div class="section product">
+        <div class="sectionTitle">Yet another retrospective board</div>
+        <div class="sectionDescription">
+          <p>This could have been the name of the website. YARB. Then why on earth did I decide to create it? Why?</p>
+          <p>
+            It's quite simple really. There are many retrospective websites out there. Many great features,
+            great design, great stuff really. But what I needed was simple: a board, where I could organise my postits
+            the way I wanted, where I could group them by topic - for free. I looked around, and didn't find anything.
+            So I decided to give it a go. If you have any feedback, please contact me using the form below.
+          </p>
         </div>
-        <button class="submitBoardButton" type="submit">Create board</button>
-      </form>
+      </div>
+
+      <div class="section me">
+        <div class="sectionTitle">Who am I?</div>
+        <div class="sectionDescription">
+          <p>
+            <table>
+              <tr>
+                <td rowspan="4"><img src="me.jpg"></td>
+                <td>Name: </td>
+                <td>Soufiene Windpassinger</td>
+              </tr>
+              <tr>
+                <td>Age: </td>
+                <td>33</td>
+              </tr>
+              <tr>
+                <td>Occupation: </td>
+                <td>(soon to be) Freelance web developer</td>
+              </tr>
+              <tr>
+                <td>Location: </td>
+                <td>Germany</td>
+              </tr>
+            </table>
+          </p>
+          <p>
+            I've had many lifes already: C++ developer, Java developer,
+            <a href="http://dspace.stir.ac.uk/handle/1893/3603#.WNeLU3WGOkA">world expert on disease modelling in PEPA</a>,
+            international basket ball player - I was 13 though... For the last 5 years, I have embraced the life of a developer,
+            specialised in frontend. This meant doing many different things:
+            <a href="http://vanilla-js.com/">vanilla Javascript</a>,
+            <a href="https://angularjs.org/">AngularJS</a>, <a href="http://lesscss.org/">less</a>,
+            <a href="https://jquery.com/">jQuery</a>,
+            <a href="http://handlebarsjs.com/">Handlebars</a>,
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">WebSockets</a>,
+            <a href="https://nodejs.org/en/">NodeJS</a>,
+            <a href="http://www.seleniumhq.org/">end-to-end testing</a>,
+            <a href="https://mochajs.org/">unit testing</a>.
+            I've even been <a href="https://www.scrumalliance.org/why-scrum/scrum-guide">scrum master</a> on occasions.
+          </p>
+      </div>
+
+
+      <div class="section contactMe">
+        <div class="sectionTitle">Contact me</div>
+        <div class="sectionDescription">
+          <form onSubmit="app.sendMessage(this); return false;">
+						<input class="input" type="email" name="inputEmail" placeholder="Your email address, so I can contact you back" required>
+						<br>
+						<textarea class="input" type="text" name="inputMessage"
+              placeholder="Your message" required></textarea>
+						<br>
+						<button  type="submit">Send message</button>
+          </form>
+        </div>
+      </div>
+      <div id="loader"></div>
     </div>
+    <script type="text/javascript" src="/utils/crate.js"></script>
+    <script type="text/javascript" src="/about/about.js"></script>
   </body>
 </html>

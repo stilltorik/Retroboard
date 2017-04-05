@@ -1,0 +1,54 @@
+.title {
+  text-align: center;
+  margin: 20px 0 30px;
+}
+.content {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 583px;
+}
+
+.content .section .sectionTitle {
+  text-align: center;
+  font-size: 24px;
+}
+.content .section .sectionDescription,
+.content .section .sectionDescription table td {
+  font-size: 18px;
+}
+.content .section.me .sectionDescription table td {
+  padding: 0 0 0 5px;
+}
+.content .section.me .sectionDescription img {
+  width: 120px;
+  border-radius: 20px;
+}
+.content .section .sectionDescription .input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 6px;
+  font-size: 18px;
+  font-family: initial;
+  outline: none;
+  border-radius: 7px;
+  border: 1px solid #ddd;
+}
+.content .section .sectionDescription .input:focus {
+  border-color: #989898;
+}
+.content .section .sectionDescription textarea.input {
+  height: 150px;
+}
+.content .section .sectionDescription button {
+  margin-top: 15px;
+}
+#loader {
+  height: 100%;
+  width: 100%;
+  opacity: 0.7;
+  background: rgba(255, 255, 255, 0.7) url('/about/loader.gif') no-repeat center;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

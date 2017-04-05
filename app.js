@@ -12,7 +12,9 @@ var app = express();
 var port = 3001;
 
 var board = require('./databaseBoard');
-
+var config = process.argv[2];
+//var sendgrid  = require('sendgrid')(config.sendgrid);
+var sendgrid  = require('sendgrid')('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');
 
 app.set('views', __dirname + '/frontend');
 app.set('view engine', 'hbs');
@@ -109,18 +111,25 @@ app.get('/', function (req, res) {
       left: '240px',
       plus: 3
     }, {
-      text: 'Open source - click to contribute',
-      link: 'https://github.com/stilltorik/Retroboard',
+      text: 'Optimized for:\n • Chrome\n • Firefox',
       color: 'rgb(20, 23, 222)',
       top: '437px',
       left: '170px',
       plus: 2
     }, {
-      text: 'Optimized for:\n • Chrome\n • Firefox',
+      text: 'Open source - click to contribute',
+      link: 'https://github.com/stilltorik/Retroboard',
       color: 'rgb(255, 255, 0)',
       top: '417px',
-      left: '520px',
+      left: '450px',
       plus: 2
+    }, {
+      text: 'About',
+      link: '/about',
+      color: 'rgb(255, 255, 0)',
+      top: '417px',
+      left: '575px',
+      plus: 1
     }
   ]
  res.render('homePage/homePage.hbs', {postits: postits});
@@ -161,6 +170,34 @@ app.get('/board/:boardId/:boardTitle', function (req, res) {
   });
 });
 
+
+app.get('/about', function (req, res) {
+ res.render('about/about.hbs');
+});
+
+app.post('/message',function(req, res){
+	var bodyStr = '';
+	req.on('data',function(chunk){
+		bodyStr += chunk.toString();
+	});
+	req.on('end',function() {
+		var emailData = JSON.parse(bodyStr);
+
+		sendgrid.send({
+			to:       'soufiene.windpassinger@gmail.com',
+			from:     emailData.email,
+			subject:  '[IMPORTANT] Email from e-retrospective]',
+			text:     emailData.message
+		}, function(err, response) {
+			if (err) {
+				res.send({status: 500});
+			} else {
+				res.send({status: 200});
+			}
+		});
+	});
+
+});
 
 app.get('/listBoards', function (req, res) {
   board.getAllBoards()

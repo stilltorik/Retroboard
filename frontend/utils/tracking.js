@@ -23,3 +23,11 @@ tracking.trackCreateDashboard = function (config) {
 tracking.trackExportCSV = function (config) {
   woopra.track("exportCSV", {});
 };
+
+tracking.trackEmailSent = function (config) {
+  woopra.track("emailSent", {
+    success: config.status,
+    email: config.email,
+    message: config.email
+  });
+};

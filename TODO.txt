@@ -32,7 +32,7 @@ Else:
 - X Further check for potential injections in title, section titles and usernames
 - X analytics
 - X export in CSV
-- link to about page
+- about page: remove sendGrid thingy from app.js
 - robots.txt
 - Link to test page
 - proper build for frontend

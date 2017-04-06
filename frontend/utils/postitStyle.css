@@ -52,7 +52,7 @@
   font-size: 16px;
 }
 .dragging {
-  position: fixed;
+  position: absolute;
   background-color: black;
   -webkit-user-select: none;
   -moz-user-select: none;

@@ -203,7 +203,7 @@
       '  onmouseup="(function(e) {e.stopPropagation();})(event)"' +
       '  onkeyup="app.widgets.postits.updateDescription(this.parentElement, this.value)"' +
       '  onblur="app.websocket.unlockPostit(this.parentElement.getAttribute(\'data-index\'))"' +
-      '  onfocus="app.websocket.lockPostit(this.parentElement.getAttribute(\'data-index\'))">' +
+      '  onfocus="app.widgets.postits.onfocusMessage(this)">' +
       config.description +
       '</textarea>',
       '<div class="plus" title="' +
@@ -231,6 +231,7 @@
       postit,
       {
         onMove: function(elt) {
+          scrolling.disableScroll();
           app.widgets.postits.increaseZIndex(postit);
           // setTimeout required to avoid the race condition with onblur on textarea
           setTimeout(function() {
@@ -238,7 +239,13 @@
           }, 1);
         },
         onStopMove: function(elt) {
-          app.websocket.unlockPostit(postit.getAttribute('data-index'));
+          scrolling.enableScroll();
+          var textarea = postit.getElementsByTagName('textarea')[0];
+          // Multiply by 2 to ensure the cursor always ends up at the end;
+          // Opera sometimes sees a carriage return as 2 characters.
+          var messageLength = textarea.value.length * 2;
+          textarea.focus();
+          textarea.setSelectionRange(messageLength, messageLength);
           app.websocket.updatePostits([{
             top: postit.offsetTop,
             left: postit.offsetLeft,
@@ -252,6 +259,15 @@
   app.widgets.postits.stopPropagation = function (event) {
     event.stopPropagation();
   }
+  app.widgets.postits.onfocusMessage = function(messageArea) {
+    var postit = messageArea.parentElement;
+    app.widgets.postits.increaseZIndex(postit);
+    app.websocket.lockPostit(postit.getAttribute('data-index'));
+    app.websocket.updatePostits([{
+      zIndex: postit.style.zIndex,
+      postitIndex: postit.getAttribute('data-index')
+    }]);
+  };
   app.widgets.postits.increaseZIndex = function(postit) {
     postit.style.zIndex = app.widgets.postits.nextZIndex;
     app.widgets.postits.nextZIndex++;

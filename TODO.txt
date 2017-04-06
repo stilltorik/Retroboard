@@ -26,8 +26,8 @@ Else:
 - X prettifying
 - clean code (add/show postit type section)
 - X check input validation
--- X create dashboard page
--- X board page
+- X create dashboard page
+- X board page
 - X use requestAnimationFrame: https://css-tricks.com/debouncing-throttling-explained-examples/ (No use)
 - X Further check for potential injections in title, section titles and usernames
 - X analytics
@@ -42,12 +42,12 @@ Bugs:
 - X Can't put down postits when scrolling happens.
 - X We can unlock postits that we didn't lock ourselves
 - X Locked postits remain locked if closing the window/tab
-- When a postit is outside the visible window at started, there is no scrollbar
+- X When a postit is outside the visible window at started, there is no scrollbar
 - X If space in name, count of +s wrong
 - X adding +s not reflected in other people windows
 - some postits scroll, other don't. Why?
-- add autofocus on postit
-- Postit not updated when the user deletes everything
+- X add autofocus on postit
+- X Postit not updated when the user deletes everything
 - scrolling not practical on Firefox
 - X locking not always works
 - X Disallow move on textarea

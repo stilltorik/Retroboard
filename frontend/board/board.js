@@ -25,6 +25,9 @@
       port = ':443';
     }
     app.websocket.ws = new WebSocket('ws://' + host + port);
+    setInterval(function() {
+      app.websocket.ws.send(JSON.stringify({type: 'ping'}));
+    }, 9000);
     app.websocket.ws.onmessage = function(event) {
       var message = JSON.parse(event.data);
       if (message.type === 'postitCreated') {
@@ -197,7 +200,8 @@
       '<div style="position: absolute; right: 3px;" onclick="app.widgets.postits.deleteLocal(this)">' + closingSymbol + '</div>',
       '<textarea class="postitText"',
       '  onkeyup="app.widgets.postits.updateDescription(this.parentElement, this.value)"',
-      '  onblur="app.websocket.unlockPostit(this.parentElement.getAttribute(\'data-index\'))">' +
+      '  onblur="app.websocket.unlockPostit(this.parentElement.getAttribute(\'data-index\'))"' +
+      '  onfocus="app.websocket.lockPostit(this.parentElement.getAttribute(\'data-index\'))">' +
       config.description +
       '</textarea>',
       '<div class="plus" title="' +

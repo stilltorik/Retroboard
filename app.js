@@ -226,7 +226,9 @@ wss.on('connection', function (ws) {
       postitIndex: msg.postitIndex,
       type: msg.type
     };
-    if (msg.type === 'lock') {
+    if (msg.type === 'ping') {
+      ws.send(JSON.stringify({type: 'pong'}));
+    } else if (msg.type === 'lock') {
       lockedPostits[msg.postitIndex] = ws.id;
       broadcastMessage(false, response);
     } else if (msg.type === 'unlock') {

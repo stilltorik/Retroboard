@@ -46,3 +46,11 @@ Bugs:
 - X If space in name, count of +s wrong
 - X adding +s not reflected in other people windows
 - some postits scroll, other don't. Why?
+- add autofocus on postit
+- Postit not updated when the user deletes everything
+- scrolling not practical on Firefox
+- X locking not always works
+- X Disallow move on textarea
+- X websockets unexpectedly closing
+- bin instead of cross? at bottom? https://pixabay.com/en/icon-pack-package-icons-to-save-2129743/
+- when postit locked by 2 people, it's an issue

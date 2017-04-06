@@ -14,7 +14,7 @@ var port = 3001;
 var board = require('./databaseBoard');
 var config = process.argv[2];
 //var sendgrid  = require('sendgrid')(config.sendgrid);
-var sendgrid  = require('sendgrid')('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');
+var sendgrid  = require('sendgrid')('');
 
 app.set('views', __dirname + '/frontend');
 app.set('view engine', 'hbs');

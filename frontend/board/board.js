@@ -198,8 +198,10 @@
     var hasUserPlussed = config.thumbsUp.indexOf(app.username) !== -1;
     postit.innerHTML = [
       '<div style="position: absolute; right: 3px;" onclick="app.widgets.postits.deleteLocal(this)">' + closingSymbol + '</div>',
-      '<textarea class="postitText"',
-      '  onkeyup="app.widgets.postits.updateDescription(this.parentElement, this.value)"',
+      '<textarea class="postitText"' +
+      '  onmousedown="(function(e) {e.stopPropagation();})(event)"' +
+      '  onmouseup="(function(e) {e.stopPropagation();})(event)"' +
+      '  onkeyup="app.widgets.postits.updateDescription(this.parentElement, this.value)"' +
       '  onblur="app.websocket.unlockPostit(this.parentElement.getAttribute(\'data-index\'))"' +
       '  onfocus="app.websocket.lockPostit(this.parentElement.getAttribute(\'data-index\'))">' +
       config.description +
@@ -230,7 +232,10 @@
       {
         onMove: function(elt) {
           app.widgets.postits.increaseZIndex(postit);
-          app.websocket.lockPostit(config.index);
+          // setTimeout required to avoid the race condition with onblur on textarea
+          setTimeout(function() {
+            app.websocket.lockPostit(config.index);
+          }, 1);
         },
         onStopMove: function(elt) {
           app.websocket.unlockPostit(postit.getAttribute('data-index'));
@@ -272,7 +277,7 @@
       if (newPostit.top) postitsDom.style.top = newPostit.top + 'px';
       if (newPostit.left) postitsDom.style.left = newPostit.left + 'px';
       if (newPostit.zIndex) postitsDom.style.zIndex = newPostit.zIndex;
-      if (newPostit.description)
+      if (newPostit.description !== undefined)
         postitsDom.getElementsByTagName('textarea')[0].value = newPostit.description;
       if (newPostit.type === 'plus') {
         addPlus(postitsDom.getElementsByClassName('plus')[0], newPostit.username);
